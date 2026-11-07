@@ -5,8 +5,12 @@ const cart = useCartStore()
 const checkingOut = ref(false)
 const done = ref(false)
 const orderRef = ref('')
+const isMounted = ref(false)
 
-onMounted(() => cart.load())
+onMounted(() => {
+  cart.load()
+  isMounted.value = true
+})
 
 const fmt = (n: number, currency = 'KES') =>
   new Intl.NumberFormat('en-KE', { style: 'currency', currency, maximumFractionDigits: 0 }).format(n)
@@ -69,7 +73,11 @@ useSeoMeta({
       </ol>
     </nav>
 
-    <div v-if="cart.isEmpty && !done" class="text-center py-24">
+    <div v-if="!isMounted" class="py-24 flex justify-center">
+      <div class="w-8 h-8 rounded-full border-4 border-slate-200 border-t-orange-600 animate-spin"></div>
+    </div>
+
+    <div v-else-if="cart.isEmpty && !done" class="text-center py-24">
       <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-slate-50 mb-6">
         <svg class="w-10 h-10 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
       </div>
