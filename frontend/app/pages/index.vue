@@ -47,35 +47,36 @@ function clearFilters() {
 
 <template>
   <div class="mx-auto max-w-[1400px] px-4 py-8">
-    <div class="relative overflow-hidden rounded-2xl bg-[#4a0f2c] text-white px-10 md:px-16 py-8 md:py-10 md:min-h-[280px] flex flex-col md:flex-row items-center justify-between gap-4 mb-8 font-sans">
-      <div class="max-w-lg">
-        <h1 class="text-[32px] md:text-4xl font-semibold leading-[1.15] tracking-tight font-heading">
-          Upgrade your tech.<br class="hidden md:block" /> Save up to 10%.
+    <div class="relative overflow-hidden rounded-2xl bg-[#0B1120] text-white px-8 md:px-16 py-10 md:py-16 flex flex-col md:flex-row items-center justify-between gap-8 mb-10 min-h-[320px]">
+      <div class="max-w-lg z-10">
+        <h1 class="text-3xl md:text-5xl font-bold leading-[1.15] tracking-tight font-heading">
+          Endless electronics.<br /> Epic prices.
         </h1>
-        <p class="mt-2 text-[15px] text-white/90">
-          Get exclusive discounts on top smartphones, laptops, and audio gear.
+        <p class="mt-4 text-[15px] md:text-base text-slate-300">
+          Browse the latest upgrades for your setup.
         </p>
-        <button class="mt-4 rounded-full bg-[#fbd5ea] text-[#4a0f2c] px-5 py-2 text-sm font-semibold hover:bg-white transition-colors">
-          Shop the sale
+        <button class="mt-6 rounded-full bg-white text-[#0B1120] px-7 py-3 text-sm font-bold hover:bg-slate-100 transition-colors">
+          Shop now
         </button>
-        <p class="mt-12 text-xs text-white/80 underline cursor-pointer hover:text-white">
-          Ends Nov 30. Max KES 10,000 off. Use code: TECH10.
-        </p>
       </div>
 
-      <div class="relative w-full md:w-[600px] h-[200px] md:h-[240px] flex items-center justify-center md:justify-end">
-        <NuxtImg
-          src="/images/hero-cards.webp"
-          alt="Promotional offers"
-          class="h-full w-full object-contain object-right md:translate-x-12 md:scale-[2.1] origin-right"
-        />
+      <div class="relative w-full md:w-[500px] h-[240px] flex items-center justify-center mt-8 md:mt-0">
+        
+        <div class="absolute w-32 h-44 md:w-40 md:h-52 bg-white rounded-xl shadow-2xl transform -rotate-12 -translate-x-16 md:-translate-x-20 overflow-hidden border-4 border-white z-10 p-2">
+          <NuxtImg src="/images/hero-1.webp" alt="Product 1" class="w-full h-full object-contain mix-blend-multiply" />
+        </div>
+        
+        <div class="absolute w-36 h-48 md:w-48 md:h-64 bg-white rounded-xl shadow-2xl transform rotate-0 z-20 overflow-hidden border-4 border-white p-2">
+          <NuxtImg src="/images/hero-2.webp" alt="Product 2" class="w-full h-full object-contain mix-blend-multiply" />
+        </div>
+        
+        <div class="absolute w-32 h-44 md:w-40 md:h-52 bg-white rounded-xl shadow-2xl transform rotate-12 translate-x-16 md:translate-x-20 overflow-hidden border-4 border-white z-10 p-2">
+          <NuxtImg src="/images/hero-3.webp" alt="Product 3" class="w-full h-full object-contain mix-blend-multiply" />
+        </div>
       </div>
     </div>
 
-    <div
-      v-if="!pending"
-      class="flex items-center justify-between mb-6"
-    >
+    <div v-if="!pending" class="flex items-center justify-between mb-6">
       <p class="text-sm text-slate-500">
         Showing {{ visible.length }} {{ visible.length === 1 ? 'item' : 'items' }}
         <span v-if="activeCategory !== 'All'" class="font-medium text-slate-900">in {{ activeCategory }}</span>
